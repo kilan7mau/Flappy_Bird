@@ -1,19 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManagerLogic : MonoBehaviour
 {
-    private Player player;
-    private Spawner spawner;
+    private static GameManagerLogic instance;
 
-    public Text scoreText;
-    public GameObject playButton;
-    public GameObject gameOver;
+    public Player player;
+    public Spawner spawner;
     public int score { get; private set; }
+
+    private GameManagerUI ui;
 
     private void Awake()
     {
-        Application.targetFrameRate = 60;
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         player = FindObjectOfType<Player>();
         spawner = FindObjectOfType<Spawner>();
@@ -21,13 +29,22 @@ public class GameManager : MonoBehaviour
         Pause();
     }
 
+    public static GameManagerLogic GetInstance()
+    {
+        return instance;
+    }
+
+    public void SetUI(GameManagerUI ui)
+    {
+        this.ui = ui;
+    }
+
     public void Play()
     {
         score = 0;
-        scoreText.text = score.ToString();
 
-        playButton.SetActive(false);
-        gameOver.SetActive(false);
+        ui.HidePlayButton();
+        ui.HideGameOver();
 
         Time.timeScale = 1f;
         player.enabled = true;
@@ -41,8 +58,8 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        playButton.SetActive(true);
-        gameOver.SetActive(true);
+        ui.ShowPlayButton();
+        ui.ShowGameOver();
 
         Pause();
     }
@@ -56,7 +73,6 @@ public class GameManager : MonoBehaviour
     public void IncreaseScore()
     {
         score++;
-        scoreText.text = score.ToString();
+        ui.UpdateScore(score);
     }
-
 }

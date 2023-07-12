@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 149568775}
   - component: {fileID: 149568774}
+  - component: {fileID: 149568776}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -276,9 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae79f9d99372a6b438f800230f434b9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1474871343}
-  playButton: {fileID: 892178073}
-  gameOver: {fileID: 298509898}
+  player: {fileID: 0}
+  spawner: {fileID: 0}
 --- !u!4 &149568775
 Transform:
   m_ObjectHideFlags: 0
@@ -294,6 +294,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &149568776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149568773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b5b98fc14200149ab573a7cbdceab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreText: {fileID: 1474871343}
+  playButton: {fileID: 892178073}
+  gameOver: {fileID: 298509898}
 --- !u!1 &298509898
 GameObject:
   m_ObjectHideFlags: 0
