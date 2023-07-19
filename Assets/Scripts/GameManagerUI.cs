@@ -9,12 +9,12 @@ public class GameManagerUI : MonoBehaviour
     public GameObject playButton;
     public GameObject gameOver;
 
-    private GameManagerLogic logic;
+    //private GameManagerLogic logic;
 
     private void Start()
     {
-        logic = GameManagerLogic.GetInstance();
-        logic.SetUI(this);
+        //logic = GameManagerLogic.GetInstance();
+        //logic.SetUI(this);
     }
 
     public void UpdateScore(int score)
@@ -44,6 +44,7 @@ public class GameManagerUI : MonoBehaviour
 
     public void OnPlayButtonClick()
     {
-        logic.Play();
+        //logic.Play();
+        GameManagerLogic.instance.Play();
     }
 }

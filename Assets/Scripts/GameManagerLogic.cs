@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManagerLogic : MonoBehaviour
 {
-    private static GameManagerLogic instance;
+    public static GameManagerLogic instance;
 
     public Player player;
     public Spawner spawner;
